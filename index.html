@@ -170,18 +170,23 @@
 
   /* ===== Education ===== */
   .ed-row{
-    display:grid; grid-template-columns:220px 1fr auto; gap:40px; padding:28px 0;
+    display:grid; grid-template-columns:150px 92px 1fr auto; gap:28px; padding:30px 0;
     border-top:1px solid var(--line); align-items:center;
     transition:padding-left .25s ease, background .25s ease;
   }
   .ed-row:last-child{border-bottom:1px solid var(--line);}
   .ed-row:hover{padding-left:14px; background:rgba(242,180,0,0.03);}
-  .ed-org-row{display:flex; align-items:center; gap:14px; margin-bottom:6px;}
-  .logo-chip{
-    background:#F4F1E9; border-radius:6px; padding:5px 9px; display:inline-flex; align-items:center; height:26px; flex-shrink:0;
+  .ed-logo-badge{
+    width:92px; height:92px; background:#F4F1E9; border-radius:12px;
+    display:flex; align-items:center; justify-content:center; padding:16px; flex-shrink:0;
+    box-shadow:0 6px 16px rgba(0,0,0,0.25);
   }
-  .logo-chip img{ height:100%; width:auto; max-width:70px; object-fit:contain; display:block; }
-  .ed-org{font-family:'Archivo',sans-serif; font-weight:700; font-size:19px; text-transform:uppercase;}
+  .ed-logo-badge img{ width:100%; height:100%; object-fit:contain; display:block; }
+  .ed-logo-badge.empty{
+    background:transparent; border:1.5px dashed var(--line); box-shadow:none;
+    font-size:26px; color:var(--text-dim);
+  }
+  .ed-org{font-family:'Archivo',sans-serif; font-weight:700; font-size:20px; text-transform:uppercase; margin-bottom:5px;}
   .ed-role{font-size:13.5px; color:var(--text-soft);}
   .ed-status{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; color:var(--amber); letter-spacing:0.05em; white-space:nowrap;}
 
@@ -270,7 +275,12 @@
     .hero-grid{grid-template-columns:1fr;}
     .hero-portrait{max-width:340px;}
     .hero-foot{grid-template-columns:1fr 1fr;}
-    .section-head,.about-body,.skills-body,.proj-body,.contact-body,.ed-row{grid-template-columns:1fr;}
+    .section-head,.about-body,.skills-body,.proj-body,.contact-body{grid-template-columns:1fr;}
+    .ed-row{grid-template-columns:auto 1fr; grid-template-areas:"date date" "logo info" "logo status"; row-gap:10px;}
+    .ed-row .label{grid-area:date;}
+    .ed-logo-badge{grid-area:logo;}
+    .ed-row > div:nth-child(3){grid-area:info;}
+    .ed-status{grid-area:status;}
     .cert-grid,.proj-grid{grid-template-columns:1fr;}
     .skills-cols{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr 1fr;}
@@ -286,6 +296,63 @@
     [data-reveal],[data-stagger] > *{opacity:1; transform:none; transition:none;}
     .hero-lede,.hero-title,.hero-inset,.hero-foot,.hero-portrait{opacity:1; transform:none; animation:none;}
     html{scroll-behavior:auto;}
+  }
+
+  /* ===== Chat widget ===== */
+  #chat-toggle{
+    position:fixed; right:26px; bottom:26px; z-index:80;
+    width:58px; height:58px; border-radius:50%; border:none; cursor:pointer;
+    background:var(--amber); color:#0A0A0B;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 26px rgba(242,180,0,0.35);
+    transition:transform .2s ease;
+  }
+  #chat-toggle:hover{transform:translateY(-3px) scale(1.04);}
+  #chat-toggle svg{width:24px; height:24px;}
+
+  #chat-panel{
+    position:fixed; right:26px; bottom:96px; z-index:80;
+    width:340px; max-width:calc(100vw - 40px); height:440px; max-height:60vh;
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    display:flex; flex-direction:column; overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+    opacity:0; transform:translateY(16px) scale(0.98); pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  #chat-panel.open{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
+
+  .chat-head{
+    padding:16px 18px; border-bottom:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center; flex-shrink:0;
+  }
+  .chat-head-title{font-family:'Archivo',sans-serif; font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:0.02em;}
+  .chat-head-sub{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text-dim); margin-top:2px;}
+  #chat-close{background:none; border:none; color:var(--text-soft); cursor:pointer; font-size:18px; line-height:1; padding:4px;}
+  #chat-close:hover{color:var(--amber);}
+
+  #chat-messages{flex:1; overflow-y:auto; padding:16px 18px; display:flex; flex-direction:column; gap:12px;}
+  .chat-msg{font-size:13px; line-height:1.55; max-width:88%; padding:10px 13px; border-radius:10px;}
+  .chat-msg.bot{background:var(--panel2); color:var(--text); align-self:flex-start; border:1px solid var(--line);}
+  .chat-msg.user{background:var(--amber); color:#0A0A0B; align-self:flex-end;}
+  .chat-msg.typing{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-dim);}
+
+  .chat-input-row{display:flex; gap:8px; padding:14px; border-top:1px solid var(--line); flex-shrink:0;}
+  #chat-input{
+    flex:1; background:var(--panel2); border:1px solid var(--line); border-radius:8px;
+    color:var(--text); font-family:'Inter',sans-serif; font-size:13px; padding:10px 12px; resize:none;
+  }
+  #chat-input:focus{outline:none; border-color:var(--amber);}
+  #chat-send{
+    background:var(--amber); color:#0A0A0B; border:none; border-radius:8px;
+    width:40px; flex-shrink:0; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:background .15s ease;
+  }
+  #chat-send:hover{background:#FFC933;}
+  #chat-send:disabled{opacity:0.5; cursor:not-allowed;}
+
+  @media (max-width:480px){
+    #chat-panel{right:16px; bottom:88px; width:calc(100vw - 32px);}
+    #chat-toggle{right:16px; bottom:16px;}
   }
 </style>
 </head>
@@ -325,7 +392,7 @@
       </div>
       <div class="hero-portrait">
         <div class="portrait-frame">
-          <img src="portrait.jpg" alt="Zaw Bawe Lian">
+          <img src="images/portrait.jpg" alt="Zaw Bawe Lian">
         </div>
         <div class="portrait-cap">
           <span>ZBL <span class="amber">/</span> 2026</span>
@@ -364,32 +431,27 @@
     <div data-stagger>
       <div class="ed-row">
         <div class="label" data-i18n="edu-date-1">2023 — Now</div>
+        <div class="ed-logo-badge"><img src="https://en.wikipedia.org/wiki/Special:FilePath/University_of_the_people_logo.webp" alt="University of the People logo"></div>
         <div>
-          <div class="ed-org-row">
-            <span class="logo-chip"><img src="uoplogo.jpeg"
-     alt="University of the People logo"></span>
-            <span class="ed-org">University of the People</span>
-          </div>
+          <div class="ed-org">University of the People</div>
           <div class="ed-role" data-i18n="edu-role-1">B.Sc. Computer Science, online (USA)</div>
         </div>
         <div class="ed-status" data-i18n="edu-status-progress">In progress</div>
       </div>
       <div class="ed-row">
         <div class="label" data-i18n="edu-date-1b">2023 — Now</div>
+        <div class="ed-logo-badge"><img src="https://en.wikipedia.org/wiki/Special:FilePath/Ritsumeikan_Asia_Pacific_University_logo.svg" alt="APU logo"></div>
         <div>
-          <div class="ed-org-row">
-            <span class="logo-chip"><img src="apulogo.png"
-     alt="APU logo"></span>
-            <span class="ed-org">Ritsumeikan Asia Pacific University</span>
-          </div>
+          <div class="ed-org">Ritsumeikan Asia Pacific University</div>
           <div class="ed-role" data-i18n="edu-role-2">BBA, Beppu, Japan</div>
         </div>
         <div class="ed-status" data-i18n="edu-status-progress-2">In progress</div>
       </div>
       <div class="ed-row">
         <div class="label" data-i18n="edu-date-3">2019</div>
+        <div class="ed-logo-badge empty">🎓</div>
         <div>
-          <div class="ed-org-row"><span class="ed-org">B.E.H.S (2) Insein</span></div>
+          <div class="ed-org">B.E.H.S (2) Insein</div>
           <div class="ed-role" data-i18n="edu-role-3">High School Diploma, Yangon</div>
         </div>
         <div class="ed-status" data-i18n="edu-status-done">Completed</div>
@@ -700,6 +762,143 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); barIO.unobserve(e.target); } });
   }, { threshold: 0.4 });
   bars.forEach(b => barIO.observe(b));
+</script>
+
+<!-- ============ Chat Widget ============ -->
+<button id="chat-toggle" aria-label="Open chat">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+  </svg>
+</button>
+
+<div id="chat-panel">
+  <div class="chat-head">
+    <div>
+      <div class="chat-head-title">Ask about Zaw</div>
+      <div class="chat-head-sub">AI · answers based on this site</div>
+    </div>
+    <button id="chat-close" aria-label="Close chat">✕</button>
+  </div>
+  <div id="chat-messages"></div>
+  <div class="chat-input-row">
+    <textarea id="chat-input" rows="1" placeholder="Ask a question..."></textarea>
+    <button id="chat-send" aria-label="Send">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  /* ================================================================
+     CHAT WIDGET — routed through a Cloudflare Worker proxy.
+
+     The Groq API key lives ONLY on Cloudflare (as an encrypted secret
+     on the Worker), never in this file. The browser calls the Worker
+     below, the Worker attaches the real key server-side and forwards
+     the request to Groq, and the Worker only accepts requests coming
+     from this site's own domain. Nobody can read or reuse the key
+     from page source anymore.
+     ================================================================ */
+  const WORKER_URL = "https://portfoliochatbot.zawbawilian7.workers.dev/";
+  const GROQ_MODEL = "llama-3.3-70b-versatile";
+
+  const SYSTEM_CONTEXT = `You are a friendly assistant embedded on Zaw Bawe Lian's personal portfolio website.
+Answer questions ONLY about Zaw, using the facts below. Keep answers short (2-4 sentences), warm, and casual.
+If asked something unrelated to Zaw or not covered by these facts, politely say you don't have that info and suggest they email him directly at zawbawilian7@gmail.com.
+Never invent facts that aren't listed here.
+
+FACTS ABOUT ZAW:
+- Full name: Zaw Bawe Lian. Born 2003, grew up in Yangon, Myanmar. Now based in Beppu, Japan.
+- Studying two degrees at once: a BBA in International Management at Ritsumeikan Asia Pacific University (APU), and a B.Sc. in Computer Science through the University of the People (online, USA). Both started September 2023, both in progress.
+- High school: graduated B.E.H.S (2) Insein, Yangon, in 2019.
+- Certifications: FE Exam (Japan's Fundamental IT Engineer Exam) passed June 2026; JLPT N2 (Japanese proficiency) passed January 2026, completed in about 4 months of study; Harvard CS50 (Intro to Programming with Python) completed October 2023; IELTS overall band score 8.0, achieved June 2022.
+- Languages: Burmese (native), English (IELTS 8.0, near-native), Japanese (JLPT N2).
+- Currently building skills in: Python, data structures, web fundamentals, Git.
+- Interests: full-stack software engineering, understanding both the technical and business side of products.
+- Personality/background: adapts quickly to new systems and environments, having moved through three education systems and three languages. Comfortable picking up new languages, codebases, or countries.
+- Contact: email zawbawilian7@gmail.com, GitHub github.com/watson2193, LinkedIn linkedin.com/in/zaw-bawe-lian.
+- Projects section on the site is still being filled in — if asked about specific projects, say he's actively building his portfolio and to check back soon or ask him directly.`;
+
+  const chatHistory = [];
+  const chatToggle = document.getElementById('chat-toggle');
+  const chatPanel = document.getElementById('chat-panel');
+  const chatClose = document.getElementById('chat-close');
+  const chatMessages = document.getElementById('chat-messages');
+  const chatInput = document.getElementById('chat-input');
+  const chatSend = document.getElementById('chat-send');
+
+  function addMessage(text, who){
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + who;
+    div.textContent = text;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return div;
+  }
+
+  let greeted = false;
+  chatToggle.addEventListener('click', () => {
+    chatPanel.classList.toggle('open');
+    if (chatPanel.classList.contains('open') && !greeted) {
+      addMessage("Hi! I'm an AI assistant that can answer questions about Zaw — his education, certifications, skills, or how to reach him. What would you like to know?", 'bot');
+      greeted = true;
+    }
+    if (chatPanel.classList.contains('open')) chatInput.focus();
+  });
+  chatClose.addEventListener('click', () => chatPanel.classList.remove('open'));
+
+  async function sendChat(){
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    addMessage(text, 'user');
+    chatInput.value = '';
+    chatInput.disabled = true;
+    chatSend.disabled = true;
+    const typingEl = addMessage('Thinking…', 'bot typing');
+
+    chatHistory.push({ role: 'user', content: text });
+
+    try {
+      const res = await fetch(
+        WORKER_URL,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: GROQ_MODEL,
+            messages: [
+              { role: 'system', content: SYSTEM_CONTEXT },
+              ...chatHistory
+            ]
+          })
+        }
+      );
+      const data = await res.json();
+      const reply = data?.choices?.[0]?.message?.content
+        || "Sorry, I couldn't generate a response just now — try again in a moment.";
+      typingEl.remove();
+      addMessage(reply, 'bot');
+      chatHistory.push({ role: 'assistant', content: reply });
+    } catch (err) {
+      typingEl.remove();
+      addMessage("Something went wrong reaching the AI. Check that the API key is set up correctly.", 'bot');
+    }
+
+    chatInput.disabled = false;
+    chatSend.disabled = false;
+    chatInput.focus();
+  }
+
+  chatSend.addEventListener('click', sendChat);
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendChat();
+    }
+  });
 </script>
 
 </body>
