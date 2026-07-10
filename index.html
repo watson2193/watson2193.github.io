@@ -168,6 +168,43 @@
   .about-body p{font-size:16px; color:#C7C6C2; margin-bottom:18px; max-width:62ch;}
   .about-body strong{color:var(--text);}
 
+  /* ===== Journey (globe) ===== */
+  #journey{background:var(--bg);}
+  .journey-body{}
+  .globe-wrap{display:grid; grid-template-columns:1fr 320px; gap:48px; align-items:center;}
+  #globe-canvas-container{
+    position:relative; width:100%; aspect-ratio:1/1; max-width:440px; margin:0 auto;
+  }
+  #globe-canvas-container canvas{display:block; width:100% !important; height:100% !important;}
+  .journey-side{display:flex; flex-direction:column;}
+  .journey-legend{display:flex; flex-direction:column;}
+  .journey-legend-item{
+    display:flex; gap:12px; align-items:flex-start; padding:14px 0;
+    border-top:1px solid var(--line);
+  }
+  .journey-legend-item:first-child{border-top:none; padding-top:0;}
+  .jl-dot{
+    width:8px; height:8px; border-radius:50%; background:var(--amber); margin-top:6px; flex-shrink:0;
+    box-shadow:0 0 8px rgba(242,180,0,0.55);
+  }
+  .jl-name{font-family:'Archivo',sans-serif; font-weight:700; font-size:14.5px; text-transform:uppercase; margin-bottom:3px; letter-spacing:0.01em;}
+  .jl-note{font-size:13px; color:var(--text-soft);}
+  .journey-key{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-dim);
+    letter-spacing:0.03em; margin-top:16px; padding-top:14px; border-top:1px solid var(--line);
+  }
+  .tz-panel{margin-top:36px; border-top:1px solid var(--line); padding-top:26px;}
+  .tz-switch{display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap;}
+  .tz-btn{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase;
+    padding:9px 16px; border:1px solid var(--line); background:transparent; color:var(--text-soft);
+    cursor:pointer; transition:background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .tz-btn.active{background:var(--amber); border-color:var(--amber); color:#0A0A0B; font-weight:600;}
+  .tz-btn:hover:not(.active){border-color:var(--amber); color:var(--amber);}
+  .tz-display{font-family:'Archivo',sans-serif; font-weight:800; font-size:clamp(32px,3.6vw,46px); letter-spacing:-0.01em; font-variant-numeric:tabular-nums;}
+  .tz-sub{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-dim); margin-top:6px; text-transform:uppercase; letter-spacing:0.05em;}
+
   /* ===== Education ===== */
   .ed-row{
     display:grid; grid-template-columns:150px 92px 1fr auto; gap:28px; padding:30px 0;
@@ -276,6 +313,7 @@
     .hero-portrait{max-width:340px;}
     .hero-foot{grid-template-columns:1fr 1fr;}
     .section-head,.about-body,.skills-body,.proj-body,.contact-body{grid-template-columns:1fr;}
+    .globe-wrap{grid-template-columns:1fr;}
     .ed-row{grid-template-columns:auto 1fr; grid-template-areas:"date date" "logo info" "logo status"; row-gap:10px;}
     .ed-row .label{grid-area:date;}
     .ed-logo-badge{grid-area:logo;}
@@ -363,6 +401,7 @@
     <div class="brand"><span class="sq"></span>Zaw Bawe Lian</div>
     <div class="navlinks">
       <a href="#about" data-i18n="nav-about">About</a>
+      <a href="#journey" data-i18n="nav-journey">Journey</a>
       <a href="#education" data-i18n="nav-education">Education</a>
       <a href="#certifications" data-i18n="nav-certifications">Certifications</a>
       <a href="#skills" data-i18n="nav-skills">Skills</a>
@@ -422,10 +461,44 @@
   </div>
 </section>
 
+<section id="journey">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="label" data-i18n="journey-label"><span class="sq"></span>02 — Journey</div>
+      <div class="section-title" data-i18n="journey-title">Where I've been</div>
+    </div>
+    <div class="journey-body" data-reveal>
+      <div class="globe-wrap">
+        <div id="globe-canvas-container"></div>
+        <div class="journey-side">
+          <div class="journey-legend">
+            <div class="journey-legend-item"><span class="jl-dot"></span><div><div class="jl-name" data-i18n="jl1-name">Yangon, Myanmar</div><div class="jl-note" data-i18n="jl1-note">Where I'm from</div></div></div>
+            <div class="journey-legend-item"><span class="jl-dot"></span><div><div class="jl-name" data-i18n="jl2-name">Beppu, Japan</div><div class="jl-note" data-i18n="jl2-note">Studying now — APU</div></div></div>
+            <div class="journey-legend-item"><span class="jl-dot"></span><div><div class="jl-name" data-i18n="jl3-name">Pasadena, USA</div><div class="jl-note" data-i18n="jl3-note">University of the People — online, haven't visited</div></div></div>
+            <div class="journey-legend-item"><span class="jl-dot"></span><div><div class="jl-name" data-i18n="jl4-name">Bangkok, Thailand</div><div class="jl-note" data-i18n="jl4-note">Took the FE Exam</div></div></div>
+            <div class="journey-legend-item"><span class="jl-dot"></span><div><div class="jl-name" data-i18n="jl5-name">Tokyo, Japan</div><div class="jl-note" data-i18n="jl5-note">Where I want to work</div></div></div>
+          </div>
+          <div class="journey-key" data-i18n="journey-key">— solid = been there · - - dashed = remote / not yet</div>
+          <div class="tz-panel">
+            <h4 class="subhead" data-i18n="tz-subhead">Local Time</h4>
+            <div class="tz-switch">
+              <button type="button" class="tz-btn active" data-tz="Asia/Tokyo">JP</button>
+              <button type="button" class="tz-btn" data-tz="Asia/Yangon">MM</button>
+              <button type="button" class="tz-btn" data-tz="America/Los_Angeles">US</button>
+            </div>
+            <div class="tz-display" id="tz-display">--:--:--</div>
+            <div class="tz-sub" id="tz-sub">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="education">
   <div class="wrap">
     <div class="section-head" data-reveal>
-      <div class="label" data-i18n="edu-label"><span class="sq"></span>02 — Education</div>
+      <div class="label" data-i18n="edu-label"><span class="sq"></span>03 — Education</div>
       <div class="section-title" data-i18n="edu-title">What I'm studying</div>
     </div>
     <div data-stagger>
@@ -463,7 +536,7 @@
 <section id="certifications">
   <div class="wrap">
     <div class="section-head" data-reveal>
-      <div class="label" data-i18n="cert-label"><span class="sq"></span>03 — Certifications</div>
+      <div class="label" data-i18n="cert-label"><span class="sq"></span>04 — Certifications</div>
       <div class="section-title" data-i18n="cert-title">Credentials</div>
     </div>
     <div class="cert-grid" data-stagger>
@@ -498,7 +571,7 @@
 <section id="skills">
   <div class="wrap">
     <div class="section-head" data-reveal>
-      <div class="label" data-i18n="skills-label"><span class="sq"></span>04 — Skills</div>
+      <div class="label" data-i18n="skills-label"><span class="sq"></span>05 — Skills</div>
       <div class="section-title" data-i18n="skills-title">Toolkit</div>
     </div>
     <div class="skills-body">
@@ -527,7 +600,7 @@
 <section id="projects">
   <div class="wrap">
     <div class="section-head" data-reveal>
-      <div class="label" data-i18n="proj-label"><span class="sq"></span>05 — Projects</div>
+      <div class="label" data-i18n="proj-label"><span class="sq"></span>06 — Projects</div>
       <div class="section-title" data-i18n="proj-title">What I've built</div>
     </div>
     <div class="proj-body">
@@ -550,7 +623,7 @@
 <section id="contact">
   <div class="wrap">
     <div class="contact-body" data-reveal>
-      <div class="label" data-i18n="contact-label"><span class="sq"></span>06 — Contact</div>
+      <div class="label" data-i18n="contact-label"><span class="sq"></span>07 — Contact</div>
       <div>
         <h2 data-i18n="contact-heading">Let's <span class="accent">talk.</span></h2>
         <p data-i18n="contact-p">Feel free to reach out about opportunities, collaboration, or just to say hi.</p>
@@ -584,7 +657,7 @@
   /* ============ i18n ============ */
   const i18n = {
     en: {
-      "nav-about":"About","nav-education":"Education","nav-certifications":"Certifications",
+      "nav-about":"About","nav-journey":"Journey","nav-education":"Education","nav-certifications":"Certifications",
       "nav-skills":"Skills","nav-projects":"Projects","nav-contact":"Contact",
       "hero-lede":"Let's build<br>something worth<br>shipping.",
       "hero-title":'Learn by <span class="accent">building.</span>',
@@ -601,14 +674,23 @@
       "about-p1":'I am currently studying <strong>International Management</strong> at Ritsumeikan Asia Pacific University while also pursuing a <strong>B.Sc. in Computer Science</strong> at the University of the People to complement my business studies and further explore my interest in technology.',
       "about-p2":"My interest in programming began with Harvard's CS50P course, which encouraged me to dive deeper into computer science and software development. Since then, I have continued learning through coursework and personal projects, particularly in Python and web development.",
       "about-p3":"I am eager to learn more about both the business and technology worlds and hope to play a meaningful role at the intersection of the two fields. Growing up in Yangon, Myanmar, and studying across different educational systems and languages has also taught me how to adapt quickly to new environments and continuously learn from unfamiliar experiences.",
-      "edu-label":'<span class="sq"></span>02 — Education',
+      "journey-label":'<span class="sq"></span>02 — Journey',
+      "journey-title":"Where I've been",
+      "tz-subhead":"Local Time",
+      "jl1-name":"Yangon, Myanmar","jl1-note":"Where I'm from",
+      "jl2-name":"Beppu, Japan","jl2-note":"Studying now — APU",
+      "jl3-name":"Pasadena, USA","jl3-note":"University of the People — online, haven't visited",
+      "jl4-name":"Bangkok, Thailand","jl4-note":"Took the FE Exam",
+      "jl5-name":"Tokyo, Japan","jl5-note":"Where I want to work",
+      "journey-key":"— solid = been there · - - dashed = remote / not yet",
+      "edu-label":'<span class="sq"></span>03 — Education',
       "edu-title":"What I'm studying",
       "edu-date-1":"2023 — Now","edu-date-1b":"2023 — Now","edu-date-3":"2019",
       "edu-role-1":"B.Sc. Computer Science, online (USA)",
       "edu-role-2":"BBA, Beppu, Japan",
       "edu-role-3":"High School Diploma, Yangon",
       "edu-status-progress":"In progress","edu-status-progress-2":"In progress","edu-status-done":"Completed",
-      "cert-label":'<span class="sq"></span>03 — Certifications',
+      "cert-label":'<span class="sq"></span>04 — Certifications',
       "cert-title":"Credentials",
       "cert1-title":"FE Exam",
       "cert1-desc":"Japan's national IT engineer certification, covering programming logic, computer science fundamentals, and IT strategy. It's the standard entry-level benchmark Japanese employers use to gauge baseline engineering competency.",
@@ -622,18 +704,18 @@
       "cert4-title":"IELTS 8.0",
       "cert4-desc":'International English Language Testing System, scored out of 9. An 8.0 is classed as a "very good user" — near-native fluency across reading, writing, listening, and speaking.',
       "cert4-date":"Jun 2022",
-      "skills-label":'<span class="sq"></span>04 — Skills',
+      "skills-label":'<span class="sq"></span>05 — Skills',
       "skills-title":"Toolkit",
       "skills-sub1":"Language Fluency",
       "lang-my":"Burmese","lvl-my":"Native","lang-en":"English","lang-ja":"Japanese",
       "skills-sub2":"Currently Building",
       "pill-ds":"Data Structures","pill-web":"Web Fundamentals",
-      "proj-label":'<span class="sq"></span>05 — Projects',
+      "proj-label":'<span class="sq"></span>06 — Projects',
       "proj-title":"What I've built",
       "proj-tag":"Add your project","proj-name":"Project Title",
       "proj-desc":"What it does, what you built it with, link to repo or demo.",
       "proj-add":"+ Add project","proj-add2":"+ Add project",
-      "contact-label":'<span class="sq"></span>06 — Contact',
+      "contact-label":'<span class="sq"></span>07 — Contact',
       "contact-heading":'Let\'s <span class="accent">talk.</span>',
       "contact-p":"Feel free to reach out about opportunities, collaboration, or just to say hi.",
       "link-email":"Email",
@@ -645,7 +727,7 @@
       "foot-loc":"Beppu, Japan"
     },
     ja: {
-      "nav-about":"自己紹介","nav-education":"学歴","nav-certifications":"資格",
+      "nav-about":"自己紹介","nav-journey":"歩み","nav-education":"学歴","nav-certifications":"資格",
       "nav-skills":"スキル","nav-projects":"プロジェクト","nav-contact":"お問い合わせ",
       "hero-lede":"意味のあるものを<br>一緒に<br>作りましょう。",
       "hero-title":'作りながら<span class="accent">学ぶ。</span>',
@@ -662,14 +744,23 @@
       "about-p1":"私は現在、二つの学位を同時に取得しています。立命館アジア太平洋大学（APU）での<strong>国際経営学のBBA</strong>と、University of the Peopleでの<strong>コンピュータサイエンス学士</strong>です。どちらも私にとって同じくらい重要な軸であり、コードだけでなく、プロダクトの背景にあるビジネスも理解できるエンジニアを目指しています。",
       "about-p2":"プログラミングとの出会いはHarvard大学のCS50でした。それがきっかけで、興味が本気の目標に変わりました。",
       "about-p3":"私はミャンマーのヤンゴンで育ち、これまでに三つの教育制度と三つの言語を経験してきました。<strong>新しい言語、新しいコード、新しい国——どんな未知のシステムにも早く馴染める</strong>のが私の強みです。",
-      "edu-label":'<span class="sq"></span>02 — 学歴',
+      "journey-label":'<span class="sq"></span>02 — 歩み',
+      "journey-title":"これまでの歩み",
+      "tz-subhead":"現地時間",
+      "jl1-name":"ミャンマー・ヤンゴン","jl1-note":"出身地",
+      "jl2-name":"日本・別府","jl2-note":"現在在学中（APU）",
+      "jl3-name":"アメリカ・パサデナ","jl3-note":"University of the People — オンラインのみ、訪問経験なし",
+      "jl4-name":"タイ・バンコク","jl4-note":"FE試験を受験",
+      "jl5-name":"日本・東京","jl5-note":"働きたい場所",
+      "journey-key":"— 実線 = 訪問経験あり · - - 破線 = 遠隔・未訪問",
+      "edu-label":'<span class="sq"></span>03 — 学歴',
       "edu-title":"現在学んでいること",
       "edu-date-1":"2023年 — 現在","edu-date-1b":"2023年 — 現在","edu-date-3":"2019年",
       "edu-role-1":"コンピュータサイエンス学士（オンライン・アメリカ）",
       "edu-role-2":"経営学BBA、別府・日本",
       "edu-role-3":"高等学校卒業、ヤンゴン",
       "edu-status-progress":"在学中","edu-status-progress-2":"在学中","edu-status-done":"卒業",
-      "cert-label":'<span class="sq"></span>03 — 資格',
+      "cert-label":'<span class="sq"></span>04 — 資格',
       "cert-title":"保有資格",
       "cert1-title":"基本情報技術者試験（FE）",
       "cert1-desc":"日本の国家資格であるITエンジニア試験。プログラミングの基礎、コンピュータサイエンスの基本概念、IT戦略までを幅広くカバーしており、日本企業がエンジニアの基礎力を測る際の標準的な指標として使われています。",
@@ -683,18 +774,18 @@
       "cert4-title":"IELTS 8.0",
       "cert4-desc":"国際的な英語能力試験IELTSにおいて、9点満点中8.0を取得。これは「非常に優れた使用者」レベルとされ、読解・作文・リスニング・スピーキングすべてにおいてネイティブに近い運用能力を示します。",
       "cert4-date":"2022年6月",
-      "skills-label":'<span class="sq"></span>04 — スキル',
+      "skills-label":'<span class="sq"></span>05 — スキル',
       "skills-title":"使用ツール",
       "skills-sub1":"言語運用能力",
       "lang-my":"ミャンマー語","lvl-my":"母語","lang-en":"英語","lang-ja":"日本語",
       "skills-sub2":"現在学習中の技術",
       "pill-ds":"データ構造","pill-web":"Web基礎",
-      "proj-label":'<span class="sq"></span>05 — プロジェクト',
+      "proj-label":'<span class="sq"></span>06 — プロジェクト',
       "proj-title":"制作したもの",
       "proj-tag":"プロジェクトを追加","proj-name":"プロジェクト名",
       "proj-desc":"内容、使用技術、リポジトリやデモへのリンクなど。",
       "proj-add":"+ 追加する","proj-add2":"+ 追加する",
-      "contact-label":'<span class="sq"></span>06 — お問い合わせ',
+      "contact-label":'<span class="sq"></span>07 — お問い合わせ',
       "contact-heading":'<span class="accent">お話</span>しましょう。',
       "contact-p":"お仕事のご相談、コラボレーション、ちょっとした挨拶でも、お気軽にご連絡ください。",
       "link-email":"メール",
@@ -762,6 +853,251 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); barIO.unobserve(e.target); } });
   }, { threshold: 0.4 });
   bars.forEach(b => barIO.observe(b));
+</script>
+
+<!-- ============ Journey Globe + Timezone Clock ============ -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+(function(){
+  /* ---- Timezone clock (runs regardless of whether WebGL loads) ---- */
+  const tzButtons = document.querySelectorAll('.tz-btn');
+  const tzDisplay = document.getElementById('tz-display');
+  const tzSub = document.getElementById('tz-sub');
+  let currentTZ = 'Asia/Tokyo';
+  const tzNames = {
+    'Asia/Tokyo': 'Japan Standard Time',
+    'Asia/Yangon': 'Myanmar Time',
+    'America/Los_Angeles': 'US Pacific Time'
+  };
+
+  function updateClock(){
+    if (!tzDisplay) return;
+    const now = new Date();
+    const timeStr = new Intl.DateTimeFormat('en-US', {
+      timeZone: currentTZ, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+    }).format(now);
+    const dateStr = new Intl.DateTimeFormat('en-US', {
+      timeZone: currentTZ, weekday: 'short', month: 'short', day: 'numeric'
+    }).format(now);
+    tzDisplay.textContent = timeStr;
+    tzSub.textContent = `${dateStr} · ${tzNames[currentTZ]}`;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  tzButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tzButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentTZ = btn.getAttribute('data-tz');
+      updateClock();
+    });
+  });
+
+  /* ---- Rotating globe with journey markers (D3 orthographic + real land data) ---- */
+  const container = document.getElementById('globe-canvas-container');
+  if (!container || typeof d3 === 'undefined') return;
+
+  const AMBER = '242,180,0';
+  const OCEAN = '#0d0d0e';
+
+  // visited: true = solid glowing path (actually been there), false = dashed (remote / aspirational)
+  const LOCATIONS = [
+    { name: 'Yangon',   lon: 96.1735,   lat: 16.8409,  home: true  },
+    { name: 'Beppu',    lon: 131.4913,  lat: 33.2846,  visited: true  },
+    { name: 'Pasadena', lon: -118.1445, lat: 34.1478,  visited: false },
+    { name: 'Bangkok',  lon: 100.5018,  lat: 13.7563,  visited: true  },
+    { name: 'Tokyo',    lon: 139.6503,  lat: 35.6762,  visited: false }
+  ];
+  const home = LOCATIONS[0];
+
+  const canvas = document.createElement('canvas');
+  container.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+
+  let w, h, radius;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  const projection = d3.geoOrthographic().clipAngle(90);
+  const path = d3.geoPath(projection, ctx);
+
+  let rotation = [-home.lon, -home.lat * 0.55];
+  let autoRotate = true;
+  const rotationSpeed = 0.055;
+
+  let landFeatures = null;
+  let landDots = [];
+  let loadFailed = false;
+
+  function sizeCanvas(){
+    w = container.clientWidth;
+    h = container.clientHeight || w;
+    if (!w || !h) return;
+    radius = Math.min(w, h) / 2.15;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    projection.scale(radius).translate([w / 2, h / 2]);
+  }
+
+  function visible(lon, lat){
+    const center = [-rotation[0], -rotation[1]];
+    return d3.geoDistance([lon, lat], center) < Math.PI / 2 - 0.02;
+  }
+
+  function greatCircleArc(a, b, steps){
+    const interp = d3.geoInterpolate([a.lon, a.lat], [b.lon, b.lat]);
+    const coords = [];
+    for (let i = 0; i <= steps; i++) coords.push(interp(i / steps));
+    return { type: 'LineString', coordinates: coords };
+  }
+  const ARCS = LOCATIONS.slice(1).map(loc => ({
+    feature: greatCircleArc(home, loc, 80),
+    visited: !!loc.visited
+  }));
+
+  function render(){
+    if (!w) return;
+    ctx.clearRect(0, 0, w, h);
+    projection.rotate(rotation);
+
+    // ocean / globe body
+    ctx.beginPath();
+    ctx.arc(w / 2, h / 2, radius, 0, Math.PI * 2);
+    ctx.fillStyle = OCEAN;
+    ctx.fill();
+    ctx.strokeStyle = `rgba(${AMBER},0.28)`;
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+
+    // graticule
+    ctx.beginPath();
+    path(d3.geoGraticule()());
+    ctx.strokeStyle = `rgba(${AMBER},0.12)`;
+    ctx.lineWidth = 0.6;
+    ctx.stroke();
+
+    if (landFeatures){
+      // land outlines
+      ctx.beginPath();
+      landFeatures.features.forEach(f => path(f));
+      ctx.strokeStyle = `rgba(${AMBER},0.32)`;
+      ctx.lineWidth = 0.7;
+      ctx.stroke();
+
+      // land dot stipple
+      ctx.fillStyle = `rgba(${AMBER},0.5)`;
+      landDots.forEach(d => {
+        if (!visible(d[0], d[1])) return;
+        const p = projection(d);
+        if (!p) return;
+        ctx.beginPath();
+        ctx.arc(p[0], p[1], 0.9, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    } else if (loadFailed){
+      // fallback so the section doesn't look broken if the data fetch fails
+      ctx.fillStyle = `rgba(${AMBER},0.55)`;
+      ctx.font = '11px "IBM Plex Mono", monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('map data unavailable', w / 2, h / 2);
+    }
+
+    // arcs — solid for visited, dashed for remote/aspirational
+    ARCS.forEach(arc => {
+      ctx.beginPath();
+      ctx.setLineDash(arc.visited ? [] : [3, 4]);
+      ctx.lineWidth = arc.visited ? 1.4 : 1;
+      ctx.globalAlpha = arc.visited ? 0.6 : 0.4;
+      path(arc.feature);
+      ctx.strokeStyle = `rgb(${AMBER})`;
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+      ctx.setLineDash([]);
+    });
+
+    // markers — pulsing pin for each location
+    const t = performance.now() * 0.001;
+    LOCATIONS.forEach((loc, i) => {
+      if (!visible(loc.lon, loc.lat)) return;
+      const p = projection([loc.lon, loc.lat]);
+      if (!p) return;
+
+      const wave = Math.abs(Math.sin(t * 1.3 + i));
+      ctx.beginPath();
+      ctx.arc(p[0], p[1], 3.5 + wave * 6, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(${AMBER},${0.45 * (1 - wave)})`;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(p[0], p[1], 3.2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgb(${AMBER})`;
+      ctx.fill();
+      ctx.strokeStyle = '#0A0A0B';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    });
+  }
+
+  function loadLandData(){
+    fetch('https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/110m/physical/ne_110m_land.json')
+      .then(res => { if (!res.ok) throw new Error('load failed'); return res.json(); })
+      .then(data => {
+        landFeatures = data;
+        const dots = [];
+        const step = 1.4;
+        landFeatures.features.forEach(feature => {
+          const bounds = d3.geoBounds(feature);
+          const [[minLng, minLat], [maxLng, maxLat]] = bounds;
+          for (let lng = minLng; lng <= maxLng; lng += step){
+            for (let lat = minLat; lat <= maxLat; lat += step){
+              if (d3.geoContains(feature, [lng, lat])) dots.push([lng, lat]);
+            }
+          }
+        });
+        landDots = dots;
+      })
+      .catch(() => { loadFailed = true; });
+  }
+
+  let dragging = false;
+  canvas.addEventListener('pointerdown', (e) => {
+    dragging = true;
+    autoRotate = false;
+    canvas.setPointerCapture(e.pointerId);
+    canvas.dataset.lastX = e.clientX;
+    canvas.dataset.lastY = e.clientY;
+  });
+  canvas.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - Number(canvas.dataset.lastX);
+    const dy = e.clientY - Number(canvas.dataset.lastY);
+    rotation = [rotation[0] + dx * 0.35, Math.max(-90, Math.min(90, rotation[1] - dy * 0.35))];
+    canvas.dataset.lastX = e.clientX;
+    canvas.dataset.lastY = e.clientY;
+  });
+  ['pointerup', 'pointerleave'].forEach(ev => {
+    canvas.addEventListener(ev, () => {
+      dragging = false;
+      setTimeout(() => { autoRotate = true; }, 1200);
+    });
+  });
+  canvas.style.cursor = 'grab';
+
+  window.addEventListener('resize', sizeCanvas);
+  sizeCanvas();
+  loadLandData();
+
+  function tick(){
+    requestAnimationFrame(tick);
+    if (autoRotate) rotation[0] += rotationSpeed;
+    render();
+  }
+  requestAnimationFrame(tick);
+})();
 </script>
 
 <!-- ============ Chat Widget ============ -->
@@ -903,3 +1239,4 @@ FACTS ABOUT ZAW:
 
 </body>
 </html>
+
