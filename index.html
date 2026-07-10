@@ -39,8 +39,8 @@
   ::selection{background:var(--amber); color:#0B0B0C;}
 
   .label{
-    font-family:'IBM Plex Mono',monospace; font-size:11px;
-    letter-spacing:0.14em; text-transform:uppercase; color:var(--text-dim);
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:500;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim);
     display:flex; align-items:center; gap:8px;
   }
   .label .sq{width:8px; height:8px; background:var(--amber); display:inline-block; animation:pulseSq 2.6s ease-in-out infinite;}
@@ -57,7 +57,7 @@
   .brand .sq{width:9px; height:9px; background:var(--amber); animation:pulseSq 2.6s ease-in-out infinite;}
   .navlinks{display:flex; gap:26px;}
   .navlinks a{
-    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.05em; text-transform:uppercase;
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:500; letter-spacing:0.04em; text-transform:uppercase;
     color:var(--text-soft); position:relative; padding-bottom:3px; transition:color .2s ease;
   }
   .navlinks a::after{
@@ -188,7 +188,7 @@
   }
   .ed-org{font-family:'Archivo',sans-serif; font-weight:700; font-size:20px; text-transform:uppercase; margin-bottom:5px;}
   .ed-role{font-size:13.5px; color:var(--text-soft);}
-  .ed-status{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; color:var(--amber); letter-spacing:0.05em; white-space:nowrap;}
+  .ed-status{font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; text-transform:uppercase; color:var(--amber); letter-spacing:0.04em; white-space:nowrap;}
 
   /* ===== Certifications ===== */
   #certifications{background:var(--panel);}
@@ -213,25 +213,25 @@
   }
   .cert-title{font-family:'Archivo',sans-serif; font-weight:700; font-size:18px; text-transform:uppercase; margin-bottom:10px;}
   .cert-desc{font-size:13.5px; color:var(--text-soft); margin-bottom:18px; line-height:1.65; max-width:48ch;}
-  .cert-date{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-dim);}
+  .cert-date{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-dim);}
 
   /* ===== Skills ===== */
   .skills-body{display:grid; grid-template-columns:220px 1fr; gap:40px;}
   .skills-cols{display:grid; grid-template-columns:1fr 1fr; gap:50px;}
   .bar-row{margin-bottom:22px;}
-  .bar-label{display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:11.5px; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.03em; color:var(--text-soft);}
+  .bar-label{display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:12.5px; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.03em; color:var(--text-soft);}
   .bar-label span:last-child{color:var(--amber);}
   .bar-track{height:2px; background:var(--line); overflow:hidden;}
   .bar-fill{height:100%; background:var(--amber); width:0; transition:width 1.1s cubic-bezier(.2,.7,.2,1);}
   .bar-fill.in{width:var(--target);}
   .pill-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;}
   .pill{
-    font-family:'IBM Plex Mono',monospace; font-size:11px; border:1px solid var(--line); padding:7px 12px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; border:1px solid var(--line); padding:7px 12px;
     text-transform:uppercase; letter-spacing:0.02em; color:var(--text-soft);
     transition:border-color .2s ease, color .2s ease, transform .2s ease;
   }
   .pill:hover{border-color:var(--amber); color:var(--amber); transform:translateY(-2px);}
-  h4.subhead{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-dim); margin-bottom:22px;}
+  h4.subhead{font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.07em; text-transform:uppercase; color:var(--text-dim); margin-bottom:22px;}
 
   /* ===== Projects ===== */
   #projects{background:var(--panel);}
@@ -246,7 +246,7 @@
     background:var(--panel2); transform:translateY(-6px);
     box-shadow:0 14px 30px rgba(0,0,0,0.4), inset 0 1px 0 rgba(242,180,0,0.4);
   }
-  .proj-card .ptag{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--amber); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px;}
+  .proj-card .ptag{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--amber); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:14px;}
   .proj-card h3{font-family:'Archivo',sans-serif; font-size:17px; text-transform:uppercase; margin-bottom:8px;}
   .proj-card p{font-size:12.5px; color:var(--text-soft);}
   .proj-card.placeholder{align-items:center; justify-content:center; text-align:center; color:var(--text-dim); font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; border-style:dashed;}
@@ -269,7 +269,7 @@
   .footer-col .label{margin-bottom:14px;}
   .footer-col a, .footer-col span{display:block; font-size:13px; color:var(--text-soft); margin-bottom:8px; transition:color .2s ease;}
   .footer-col a:hover{color:var(--amber);}
-  .footer-bottom{display:flex; justify-content:space-between; padding-top:24px; border-top:1px solid var(--line); font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-dim); flex-wrap:wrap; gap:10px;}
+  .footer-bottom{display:flex; justify-content:space-between; padding-top:24px; border-top:1px solid var(--line); font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-dim); flex-wrap:wrap; gap:10px;}
 
   @media (max-width:900px){
     .hero-grid{grid-template-columns:1fr;}
@@ -382,7 +382,7 @@
       <div>
         <div class="hero-lede" data-i18n="hero-lede">Let's build<br>something worth<br>shipping.</div>
         <h1 class="hero-title" data-i18n="hero-title">Learn by <span class="accent">building.</span></h1>
-        <p class="hero-inset" data-i18n="hero-inset">Code always carries the shape of whoever wrote it. Mine is still taking form — one language, one system, one project at a time.</p>
+        <p class="hero-inset" data-i18n="hero-inset">Started with curiosity, and passion followed.</p>
         <div class="hero-foot">
           <div><div class="label" data-i18n="hero-based-label"><span class="sq"></span>Based in</div><div class="val" data-i18n="hero-based-val">Beppu, Japan</div></div>
           <div><div class="label" data-i18n="hero-study-label"><span class="sq"></span>Studying</div><div class="val" data-i18n="hero-study-val">Business &amp; Computer Science</div></div>
@@ -414,9 +414,9 @@
     <div class="about-body" data-reveal>
       <div class="label" data-i18n="about-label"><span class="sq"></span>01 — About</div>
       <div>
-        <p data-i18n="about-p1">I'm pursuing two degrees at once: a <strong>BBA in International Management</strong> at Ritsumeikan Asia Pacific University, and a <strong>B.Sc. in Computer Science</strong> through the University of the People. Both are equally part of who I am — I want to be an engineer who understands the business behind the product, not just the code.</p>
-        <p data-i18n="about-p2">I got my start with Harvard's CS50, which is what turned curiosity into commitment.</p>
-        <p data-i18n="about-p3">I grew up in Yangon, Myanmar, and moved through three education systems and three languages to get here. <strong>I get comfortable with unfamiliar systems fast</strong> — new languages, new codebases, new countries, doesn't matter much which.</p>
+        <p data-i18n="about-p1">I am currently studying <strong>International Management</strong> at Ritsumeikan Asia Pacific University while also pursuing a <strong>B.Sc. in Computer Science</strong> at the University of the People to complement my business studies and further explore my interest in technology.</p>
+        <p data-i18n="about-p2">My interest in programming began with Harvard's CS50P course, which encouraged me to dive deeper into computer science and software development. Since then, I have continued learning through coursework and personal projects, particularly in Python and web development.</p>
+        <p data-i18n="about-p3">I am eager to learn more about both the business and technology worlds and hope to play a meaningful role at the intersection of the two fields. Growing up in Yangon, Myanmar, and studying across different educational systems and languages has also taught me how to adapt quickly to new environments and continuously learn from unfamiliar experiences.</p>
       </div>
     </div>
   </div>
@@ -443,7 +443,7 @@
         <div class="ed-logo-badge"><img src="apulogo.png" alt="APU logo"></div>
         <div>
           <div class="ed-org">Ritsumeikan Asia Pacific University</div>
-          <div class="ed-role" data-i18n="edu-role-2">Bachelor of Business Administration (BBA), Beppu, Japan</div>
+          <div class="ed-role" data-i18n="edu-role-2">BBA, Beppu, Japan</div>
         </div>
         <div class="ed-status" data-i18n="edu-status-progress-2">In progress</div>
       </div>
@@ -588,7 +588,7 @@
       "nav-skills":"Skills","nav-projects":"Projects","nav-contact":"Contact",
       "hero-lede":"Let's build<br>something worth<br>shipping.",
       "hero-title":'Learn by <span class="accent">building.</span>',
-      "hero-inset":"Code always carries the shape of whoever wrote it. Mine is still taking form — one language, one system, one project at a time.",
+      "hero-inset":"Started with curiosity, and passion followed.",
       "hero-based-label":'<span class="sq"></span>Based in',
       "hero-based-val":"Beppu, Japan",
       "hero-study-label":'<span class="sq"></span>Studying',
@@ -598,9 +598,9 @@
       "hero-contact-val":"Email me",
       "portrait-cap-right":"Beppu, JP",
       "about-label":'<span class="sq"></span>01 — About',
-      "about-p1":'I\'m pursuing two degrees at once: a <strong>BBA in International Management</strong> at Ritsumeikan Asia Pacific University, and a <strong>B.Sc. in Computer Science</strong> through the University of the People. Both are equally part of who I am — I want to be an engineer who understands the business behind the product, not just the code.',
-      "about-p2":"I got my start with Harvard's CS50, which is what turned curiosity into commitment.",
-      "about-p3":'I grew up in Yangon, Myanmar, and moved through three education systems and three languages to get here. <strong>I get comfortable with unfamiliar systems fast</strong> — new languages, new codebases, new countries, doesn\'t matter much which.',
+      "about-p1":'I am currently studying <strong>International Management</strong> at Ritsumeikan Asia Pacific University while also pursuing a <strong>B.Sc. in Computer Science</strong> at the University of the People to complement my business studies and further explore my interest in technology.',
+      "about-p2":"My interest in programming began with Harvard's CS50P course, which encouraged me to dive deeper into computer science and software development. Since then, I have continued learning through coursework and personal projects, particularly in Python and web development.",
+      "about-p3":"I am eager to learn more about both the business and technology worlds and hope to play a meaningful role at the intersection of the two fields. Growing up in Yangon, Myanmar, and studying across different educational systems and languages has also taught me how to adapt quickly to new environments and continuously learn from unfamiliar experiences.",
       "edu-label":'<span class="sq"></span>02 — Education',
       "edu-title":"What I'm studying",
       "edu-date-1":"2023 — Now","edu-date-1b":"2023 — Now","edu-date-3":"2019",
