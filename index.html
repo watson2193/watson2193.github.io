@@ -302,7 +302,7 @@
   .clink:hover{border-color:var(--amber); color:var(--amber); transform:translateY(-2px);}
 
   footer{border-top:1px solid var(--line); padding:50px 0 40px;}
-  .footer-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:24px; margin-bottom:44px;}
+  .footer-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-bottom:44px;}
   .footer-col .label{margin-bottom:14px;}
   .footer-col a, .footer-col span{display:block; font-size:13px; color:var(--text-soft); margin-bottom:8px; transition:color .2s ease;}
   .footer-col a:hover{color:var(--amber);}
@@ -405,7 +405,6 @@
       <a href="#education" data-i18n="nav-education">Education</a>
       <a href="#certifications" data-i18n="nav-certifications">Certifications</a>
       <a href="#skills" data-i18n="nav-skills">Skills</a>
-      <a href="#projects" data-i18n="nav-projects">Projects</a>
       <a href="#contact" data-i18n="nav-contact">Contact</a>
     </div>
     <div class="lang-switch" role="group" aria-label="Language switch">
@@ -597,33 +596,10 @@
   </div>
 </section>
 
-<section id="projects">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <div class="label" data-i18n="proj-label"><span class="sq"></span>06 — Projects</div>
-      <div class="section-title" data-i18n="proj-title">What I've built</div>
-    </div>
-    <div class="proj-body">
-      <div></div>
-      <div class="proj-grid" data-stagger>
-        <div class="proj-card">
-          <div>
-            <div class="ptag" data-i18n="proj-tag">Add your project</div>
-            <h3 data-i18n="proj-name">Project Title</h3>
-            <p data-i18n="proj-desc">What it does, what you built it with, link to repo or demo.</p>
-          </div>
-        </div>
-        <div class="proj-card placeholder" data-i18n="proj-add">+ Add project</div>
-        <div class="proj-card placeholder" data-i18n="proj-add2">+ Add project</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="contact">
   <div class="wrap">
     <div class="contact-body" data-reveal>
-      <div class="label" data-i18n="contact-label"><span class="sq"></span>07 — Contact</div>
+      <div class="label" data-i18n="contact-label"><span class="sq"></span>06 — Contact</div>
       <div>
         <h2 data-i18n="contact-heading">Let's <span class="accent">talk.</span></h2>
         <p data-i18n="contact-p">Feel free to reach out about opportunities, collaboration, or just to say hi.</p>
@@ -642,7 +618,6 @@
         <div class="footer-col"><div class="label" data-i18n="foot-edu"><span class="sq"></span>Education</div><span>University of the People</span><span data-i18n="foot-apu">APU, Japan</span></div>
         <div class="footer-col"><div class="label" data-i18n="foot-cert"><span class="sq"></span>Certifications</div><span>FE Exam</span><span>JLPT N2</span><span>CS50</span><span>IELTS 8.0</span></div>
         <div class="footer-col"><div class="label" data-i18n="foot-skills"><span class="sq"></span>Skills</div><span>Python</span><span>Git</span></div>
-        <div class="footer-col"><div class="label" data-i18n="foot-proj"><span class="sq"></span>Projects</div><span data-i18n="foot-soon">Coming soon</span></div>
         <div class="footer-col"><div class="label" data-i18n="foot-follow"><span class="sq"></span>Follow</div><a href="https://github.com/watson2193" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/zaw-bawe-lian/" target="_blank" rel="noopener">LinkedIn</a></div>
       </div>
       <div class="footer-bottom">
@@ -658,7 +633,7 @@
   const i18n = {
     en: {
       "nav-about":"About","nav-journey":"Journey","nav-education":"Education","nav-certifications":"Certifications",
-      "nav-skills":"Skills","nav-projects":"Projects","nav-contact":"Contact",
+      "nav-skills":"Skills","nav-contact":"Contact",
       "hero-lede":"Let's build<br>something worth<br>shipping.",
       "hero-title":'Learn by <span class="accent">building.</span>',
       "hero-inset":"Started with curiosity, and passion followed.",
@@ -715,7 +690,7 @@
       "proj-tag":"Add your project","proj-name":"Project Title",
       "proj-desc":"What it does, what you built it with, link to repo or demo.",
       "proj-add":"+ Add project","proj-add2":"+ Add project",
-      "contact-label":'<span class="sq"></span>07 — Contact',
+      "contact-label":'<span class="sq"></span>06 — Contact',
       "contact-heading":'Let\'s <span class="accent">talk.</span>',
       "contact-p":"Feel free to reach out about opportunities, collaboration, or just to say hi.",
       "link-email":"Email",
@@ -728,7 +703,7 @@
     },
     ja: {
       "nav-about":"自己紹介","nav-journey":"歩み","nav-education":"学歴","nav-certifications":"資格",
-      "nav-skills":"スキル","nav-projects":"プロジェクト","nav-contact":"お問い合わせ",
+      "nav-skills":"スキル","nav-contact":"お問い合わせ",
       "hero-lede":"意味のあるものを<br>一緒に<br>作りましょう。",
       "hero-title":'作りながら<span class="accent">学ぶ。</span>',
       "hero-inset":"コードには、それを書いた人の個性が表れます。私のスタイルはまだ形成中です——ひとつの言語、ひとつのシステム、ひとつのプロジェクトずつ。",
@@ -785,7 +760,7 @@
       "proj-tag":"プロジェクトを追加","proj-name":"プロジェクト名",
       "proj-desc":"内容、使用技術、リポジトリやデモへのリンクなど。",
       "proj-add":"+ 追加する","proj-add2":"+ 追加する",
-      "contact-label":'<span class="sq"></span>07 — お問い合わせ',
+      "contact-label":'<span class="sq"></span>06 — お問い合わせ',
       "contact-heading":'<span class="accent">お話</span>しましょう。',
       "contact-p":"お仕事のご相談、コラボレーション、ちょっとした挨拶でも、お気軽にご連絡ください。",
       "link-email":"メール",
@@ -1239,4 +1214,3 @@ FACTS ABOUT ZAW:
 
 </body>
 </html>
-
